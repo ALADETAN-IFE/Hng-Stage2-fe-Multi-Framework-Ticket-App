@@ -1,13 +1,15 @@
 # HNG Internship - Frontend Wizards Stage 2 (Multi-Framework-Ticket-Booking-web-app)
 
 <!-- This is my submission for the **HNG Internship Stage 2 (Frontend Wizards)** task.   -->
-stage 0: Multi framework (React, Vue and Twig) — It allows users to **view available events**, **book tickets**, and **manage their bookings** through a simple and responsive interface. Each implementation showcases understanding of component-based architecture, routing, API consumption, and dynamic UI rendering.
+stage 2: Multi framework (React, Vue and Twig) — It allows users to **view available events**, **book tickets**, and **manage their bookings** through a simple and responsive interface. Each implementation showcases understanding of component-based architecture, routing, API consumption, and dynamic UI rendering.
 
 ---
 
 ## 🚀 Live Demo
 [Live React Site on Netlify](profile-card-hng-0.netlify.app)
+
 [Live Vue Site on Netlify](profile-card-hng-0.netlify.app)
+
 [Live Twig Site on Netlify](profile-card-hng-0.netlify.app)
 
 ---
