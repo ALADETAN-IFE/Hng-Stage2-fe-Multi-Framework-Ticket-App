@@ -52,8 +52,3 @@ cd Hng-Stage2-fe-Multi-Framework-Ticket-App
 # Open the project in your browser
 open index.html
 
-
-git commit -m "initial commit and setup"
-git branch -M main
-git remote add origin https://github.com/ALADETAN-IFE/Hng-Stage2-fe-Multi-Framework-Ticket-App.git
-git push -u origin main
