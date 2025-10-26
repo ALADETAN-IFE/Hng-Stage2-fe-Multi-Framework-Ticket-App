@@ -219,7 +219,7 @@ const Signup: React.FC = () => {
           </form>
           
           <div className="mt-6 text-center">
-            <p className="text-gray-600">
+            <p className="text-gray-600 z-10">
               Already have an account?{' '}
               <Link to="/auth/login" className="text-purple-600 hover:text-purple-700 font-semibold" data-testid="test-react-signup-login-link" aria-label="Navigate to login page">
                 Sign in here

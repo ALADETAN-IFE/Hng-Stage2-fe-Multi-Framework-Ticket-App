@@ -6,11 +6,11 @@ stage 2: Multi framework (React, Vue and Twig) — It allows users to **view ava
 ---
 
 ## 🚀 Live Demo
-[Live React Site on Netlify](profile-card-hng-0.netlify.app)
+[Live React Site on Vercel](ticketstressed-react-hng-2.vercel.app)
 
-[Live Vue Site on Netlify](profile-card-hng-0.netlify.app)
+[Live Vue Site on Vercel](ticketstressed-vue-hng-2.vercel.app)
 
-[Live Twig Site on Netlify](profile-card-hng-0.netlify.app)
+[Live Twig Site on Vercel](ticketstressed-twig-hng-2.vercel.app)
 
 ---
 

@@ -86,13 +86,23 @@ const Dashboard: React.FC = () => {
     <div className="min-h-screen bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100">
       {/* Navigation */}
       <nav className="bg-white shadow-lg" data-testid="test-react-dashboard-nav">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <h1 className="text-2xl font-bold text-purple-600" data-testid="test-react-dashboard-title">TicketStressed</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-gray-700" data-testid="test-react-welcome-message">Welcome, {user?.name}</span>
+              
+              <span className="text-gray-700 flex flex-col md:flex-row" data-testid="test-react-welcome-message">
+                <span>Welcome, </span>
+                <span
+                  className="text-gray-700 inline-block max-w-20 md:max-w-52 truncate align-middle"
+                  data-testid="test-react-welcome-message"
+                  title={user?.name}
+                >
+                  {user?.name}
+                </span>
+              </span>
               <button
                 onClick={handleLogout}
                 className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200"
@@ -107,7 +117,7 @@ const Dashboard: React.FC = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         <div className="relative overflow-hidden mb-12">
           {/* Decorative Circles */}
@@ -177,7 +187,7 @@ const Dashboard: React.FC = () => {
 
         {/* Quick Actions */}
         <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Actions</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link
               to="/tickets"
