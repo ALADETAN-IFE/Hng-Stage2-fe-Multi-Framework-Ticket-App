@@ -100,7 +100,7 @@ const Dashboard: React.FC = () => {
                   data-testid="test-react-welcome-message"
                   title={user?.name}
                 >
-                  {user?.name}
+                  &nbsp;{user?.name}
                 </span>
               </span>
               <button
@@ -201,7 +201,7 @@ const Dashboard: React.FC = () => {
             </Link>
 
             <Link
-              to="/tickets"
+              to="/tickets/create"
               className="bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               <div className="flex items-center justify-center mb-4">

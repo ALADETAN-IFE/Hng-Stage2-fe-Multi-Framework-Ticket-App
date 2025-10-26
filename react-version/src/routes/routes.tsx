@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/tickets",
+    path: "/tickets/:mode?",
     element: (
       <ProtectedRoute>
         <TicketManagement />

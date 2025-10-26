@@ -50,29 +50,24 @@ const Login: React.FC = () => {
         localStorage.getItem("ticketapp_session_users") || "[]"
       );
 
-      if (
-        !existingUsers.some(
-          (user: { email: string; password: string }) =>
-            user.email !== formData.email && user.password !== formData.password
-        )
-      ) {
+      // Find user by email
+      const user = existingUsers.find((u: { user: { email: string } }) => u.user.email === formData.email);
+      console.log("shd", user)  
+      if (!user) {
         toast.error("User not found");
         return;
       }
 
-      const user = existingUsers.find(
-        (user: { email: string; password: string }) =>
-          user.email === formData.email
-      );
-      if (user?.password !== formData.password) {
-        toast.error("Invalid email or password");
+      // Validate password
+      if (user.user.password !== formData.password) {
+        toast.error("Incorrect password");
         return;
       }
 
       localStorage.setItem(
         "ticketapp_session",
         JSON.stringify({
-          user: user,
+          user: user.user,
           token: "mock-jwt-token",
           expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
         })

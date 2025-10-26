@@ -87,19 +87,21 @@ const Signup: React.FC = () => {
         return;
       }
 
-      const data = {
-        user: userData,
-        token: "mock-jwt-token",
-        expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
-      };
-
       // Store session in localStorage
       localStorage.setItem(
         "ticketapp_session_users",
-        JSON.stringify([...existingUsers, data])
+        JSON.stringify([...existingUsers, {
+        user: {...userData, password: formData.password},
+        token: "mock-jwt-token",
+        expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
+      }])
       );
 
-      localStorage.setItem("ticketapp_session", JSON.stringify(data));
+      localStorage.setItem("ticketapp_session", JSON.stringify({
+        user: userData,
+        token: "mock-jwt-token",
+        expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
+      }));
 
       toast.success("Account created successfully!");
       navigate("/dashboard");

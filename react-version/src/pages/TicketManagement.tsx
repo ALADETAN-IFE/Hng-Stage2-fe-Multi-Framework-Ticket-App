@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { EditIcon, DeleteIcon, CloseIcon, TicketIcon } from "../assets/icons";
@@ -37,9 +37,14 @@ const TicketManagement: React.FC = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const { mode } = useParams()
+
   useEffect(() => {
     loadTickets();
-  }, []);
+    if(mode == "create") {
+      setShowForm(true)
+    }
+  }, [mode]);
 
   const loadTickets = () => {
     try {
@@ -165,6 +170,9 @@ const TicketManagement: React.FC = () => {
       status: "open",
       priority: "medium",
     });
+    if(mode == "create") {
+      navigate("/tickets")
+    }
     setErrors({});
     setEditingTicket(null);
     setShowForm(false);
