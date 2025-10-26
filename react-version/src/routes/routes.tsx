@@ -32,15 +32,15 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/tickets/:mode?",
+        element: (
+          <ProtectedRoute>
+            <TicketManagement />
+          </ProtectedRoute>
+        ),
+      },
     ]
-  },
-  {
-    path: "/tickets/:mode?",
-    element: (
-      <ProtectedRoute>
-        <TicketManagement />
-      </ProtectedRoute>
-    ),
   },
   {
     path: "*",
