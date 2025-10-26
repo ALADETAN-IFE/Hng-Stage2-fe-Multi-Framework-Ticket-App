@@ -51,8 +51,10 @@ const Login: React.FC = () => {
       );
 
       // Find user by email
-      const user = existingUsers.find((u: { user: { email: string } }) => u.user.email === formData.email);
-      console.log("shd", user)  
+      const user = existingUsers.find(
+        (u: { user: { email: string } }) => u.user.email === formData.email
+      );
+
       if (!user) {
         toast.error("User not found");
         return;
@@ -110,6 +112,15 @@ const Login: React.FC = () => {
           className="bg-white rounded-2xl shadow-xl p-8"
           data-testid="test-react-login-form-container"
         >
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="mb-4 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 relative z-10"
+            data-testid="test-react-login-go-back"
+            aria-label="Go back"
+          >
+            ← Go back
+          </button>
           <header className="text-center">
             <h2
               className="text-3xl font-bold text-gray-900 mb-2"

@@ -90,18 +90,24 @@ const Signup: React.FC = () => {
       // Store session in localStorage
       localStorage.setItem(
         "ticketapp_session_users",
-        JSON.stringify([...existingUsers, {
-        user: {...userData, password: formData.password},
-        token: "mock-jwt-token",
-        expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
-      }])
+        JSON.stringify([
+          ...existingUsers,
+          {
+            user: { ...userData, password: formData.password },
+            token: "mock-jwt-token",
+            expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
+          },
+        ])
       );
 
-      localStorage.setItem("ticketapp_session", JSON.stringify({
-        user: userData,
-        token: "mock-jwt-token",
-        expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
-      }));
+      localStorage.setItem(
+        "ticketapp_session",
+        JSON.stringify({
+          user: userData,
+          token: "mock-jwt-token",
+          expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
+        })
+      );
 
       toast.success("Account created successfully!");
       navigate("/dashboard");
@@ -144,6 +150,15 @@ const Signup: React.FC = () => {
           className="bg-white rounded-2xl shadow-xl p-8"
           data-testid="test-react-signup-form-container"
         >
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="mb-4 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 relative z-10"
+            data-testid="test-react-signup-go-back"
+            aria-label="Go back"
+          >
+            ← Go back
+          </button>
           <header className="text-center">
             <h2
               className="text-3xl font-bold text-gray-900 mb-2"

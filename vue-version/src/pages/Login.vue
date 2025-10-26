@@ -15,6 +15,15 @@
         class="bg-white rounded-2xl shadow-xl p-8"
         data-testid="test-react-login-form-container"
       >
+        <button
+          type="button"
+          @click="router.back()"
+          className="mb-4 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 relative z-10"
+          data-testid="test-react-login-go-back"
+          aria-label="Go back"
+        >
+          ← Go back
+        </button>
         <header class="text-center">
           <h2
             class="text-3xl font-bold text-gray-900 mb-2"
