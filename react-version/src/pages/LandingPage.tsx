@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { WavyBackground } from '../assets/icons';
 import LandingPageCards from '../components/landingPageCard';
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 
 const LandingPage: React.FC = () => {
   return (
