@@ -19,7 +19,7 @@ const LandingPage: React.FC = () => {
               Ticket<span className="text-purple-600">Stressed</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto" data-testid="test-react-hero-description">
-              At TicketStressed, your ticket gets the spotlight it deserves. ✨✨ 
+              At TicketStressed, your ticket gets the spotlight it deserves. 
               Discover, buy, and sell event tickets that are sold out elsewhere — 
               all in one seamless platform.
             </p>
