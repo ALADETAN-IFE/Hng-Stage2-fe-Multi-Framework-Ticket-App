@@ -1,75 +1,209 @@
-# React + TypeScript + Vite
+# TicketStressed - React Version
 
-npm i tailwindcss @tailwindcss/vite react-router-dom react-toastify
+A robust ticket management web application built with React, TypeScript, and Tailwind CSS. This application provides a seamless user experience for managing tickets with full CRUD operations, authentication, and responsive design.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Features
 
-Currently, two official plugins are available:
+- **Landing Page**: Welcoming hero section with wavy background and decorative elements
+- **Authentication**: Secure login and signup with form validation
+- **Dashboard**: Statistics overview with ticket counts and quick actions
+- **Ticket Management**: Full CRUD operations for tickets with status tracking
+- **Responsive Design**: Mobile-first approach with tablet and desktop adaptations
+- **Accessibility**: Semantic HTML, ARIA labels, and keyboard navigation support
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Technologies Used
 
-## React Compiler
+- **React 19.1.1** - Frontend framework
+- **TypeScript** - Type safety and better development experience
+- **React Router DOM 7.9.4** - Client-side routing
+- **Tailwind CSS 4.1.16** - Utility-first CSS framework
+- **React Toastify 11.0.5** - Toast notifications
+- **Vite 7.1.7** - Build tool and development server
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Installation & Setup
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn package manager
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation Steps
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd multi-framework-ticket-app/react-version
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application
+
+### Build for Production
+
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The built files will be in the `dist` directory.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Preview Production Build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run preview
 ```
+
+## 🎯 Usage
+
+### Demo Credentials
+- **Email**: demo@ticketstressed.com
+- **Password**: password123
+
+### Application Flow
+
+1. **Landing Page**: Start at the homepage with hero section and feature highlights
+2. **Authentication**: 
+   - Click "Login" to sign in with demo credentials
+   - Click "Get Started" to create a new account
+3. **Dashboard**: View ticket statistics and quick actions
+4. **Ticket Management**: Create, view, edit, and delete tickets
+
+### Ticket Status System
+- **Open** (Green): New tickets that need attention
+- **In Progress** (Amber): Tickets currently being worked on
+- **Closed** (Gray): Completed or resolved tickets
+
+## 🏗️ Project Structure
+
+```
+src/
+├── assets/
+│   ├── icons.tsx          # Reusable SVG icon components
+│   └── react.svg          # React logo
+├── pages/
+│   ├── LandingPage.tsx    # Homepage with hero section
+│   ├── Login.tsx          # Authentication login
+│   ├── Signup.tsx         # User registration
+│   ├── Dashboard.tsx      # Statistics and overview
+│   ├── TicketManagement.tsx # CRUD operations for tickets
+│   └── ProtectedRoute.tsx # Authentication guard
+├── routes/
+│   └── routes.tsx         # Application routing configuration
+├── App.tsx                # Main application component
+├── main.tsx              # Application entry point
+└── index.css             # Global styles and Tailwind imports
+```
+
+## 🎨 Design System
+
+### Layout Constraints
+- **Max Width**: 1440px (centered on large screens)
+- **Responsive Breakpoints**: Mobile, tablet, and desktop
+- **Container**: Centered with proper padding
+
+### Color Scheme
+- **Primary**: Purple (#7C3AED)
+- **Secondary**: Blue (#3B82F6)
+- **Success**: Green (#10B981)
+- **Warning**: Amber (#F59E0B)
+- **Error**: Red (#EF4444)
+- **Neutral**: Gray scale
+
+### Status Colors
+- **Open**: Green tones
+- **In Progress**: Amber tones
+- **Closed**: Gray tones
+
+## 🧪 Testing
+
+### Data Test IDs
+All interactive elements include `data-testid` attributes for testing:
+- Format: `test-react-{component}-{element}`
+- Examples: `test-react-login-button`, `test-react-ticket-card-1`
+
+### Key Test IDs
+- `test-react-hero-title` - Landing page title
+- `test-react-login-form` - Login form container
+- `test-react-dashboard-nav` - Dashboard navigation
+- `test-react-ticket-management` - Ticket management page
+- `test-react-create-ticket-button` - Create ticket button
+
+## 🔒 Security & Authentication
+
+- **Session Management**: localStorage-based authentication
+- **Session Key**: `ticketapp_session`
+- **Session Expiry**: 24 hours
+- **Protected Routes**: Dashboard and Ticket Management require authentication
+- **Automatic Redirects**: Unauthorized users redirected to login
+
+## ♿ Accessibility Features
+
+- **Semantic HTML**: Proper use of `<main>`, `<nav>`, `<section>`, `<article>`, `<header>`, `<footer>`
+- **ARIA Labels**: Descriptive labels for interactive elements
+- **Focus Management**: Visible focus states and keyboard navigation
+- **Color Contrast**: Sufficient contrast ratios for text and backgrounds
+- **Screen Reader Support**: Proper heading hierarchy and alt text
+
+## 🚀 Performance Optimizations
+
+- **Code Splitting**: Route-based code splitting with React Router
+- **Lazy Loading**: Components loaded on demand
+- **Optimized Builds**: Vite's optimized production builds
+- **Tree Shaking**: Unused code elimination
+
+## 🐛 Known Issues
+
+- **Local Storage**: Data persists only in browser (not shared across devices)
+- **Mock Authentication**: No real backend integration
+- **Session Expiry**: No automatic session refresh
+
+## 🔄 State Management
+
+- **Local State**: React hooks (useState, useEffect)
+- **Data Persistence**: localStorage for tickets and authentication
+- **Form Validation**: Client-side validation with error messages
+- **Toast Notifications**: User feedback for actions
+
+## 📱 Responsive Design
+
+### Breakpoints
+- **Mobile**: < 768px (stacked layout)
+- **Tablet**: 768px - 1024px (grid layout)
+- **Desktop**: > 1024px (multi-column layout)
+
+### Mobile Features
+- **Collapsible Navigation**: Hamburger menu for mobile
+- **Touch-Friendly Buttons**: Adequate touch targets
+- **Swipe Gestures**: Natural mobile interactions
+
+## 🎯 Future Enhancements
+
+- **Real Backend Integration**: Replace localStorage with API calls
+- **Advanced Filtering**: Search and filter tickets
+- **File Attachments**: Support for ticket attachments
+- **Email Notifications**: Automated status updates
+- **User Roles**: Admin and user permission levels
+- **Analytics Dashboard**: Advanced reporting and insights
+
+## 📄 License
+
+This project is part of the HNG Internship Frontend Wizards Stage 2 task.
+
+## 👨‍💻 Developer
+
+**Aladetan Fortune Ifeloju (IfeCodes)**
+- 💻 [GitHub](https://github.com/ALADETAN-IFE)
+- 🐦 [Twitter](https://x.com/ifeCodes_)
+- 💼 [LinkedIn](https://www.linkedin.com/in/fortune-ife-aladetan-458ab136a)
+
+---
+
+**Note**: This is the React implementation of the multi-framework ticket management application. The same application is also built with Vue.js and Twig for comparison across different frontend technologies.
