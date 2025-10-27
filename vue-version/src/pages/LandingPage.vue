@@ -41,7 +41,8 @@
       
       <!-- Wavy Background -->
       <div class="absolute bottom-0 left-0 w-full" data-testid="test-react-wavy-background">
-        <WavyBackground />
+        <!-- <WavyBackground /> -->
+        <img src="../assets/landing-waves.svg" alt="Decorative wavy background" class="relative block w-full h-16" />
       </div>
     </section>
 
@@ -61,7 +62,7 @@
 </template>
 
 <script setup>
-import WavyBackground from '../assets/WavyBackground.vue';
+// import WavyBackground from '../assets/WavyBackground.vue';
 import LandingPageCards from '../components/LandingPageCards.vue';
 import Footer from '../components/Footer.vue';
 </script>
