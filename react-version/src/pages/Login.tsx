@@ -99,7 +99,7 @@ const Login: React.FC = () => {
     <main className="min-h-screen w-full relative bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       {/* Decorative Circles */}
       <div
-        className="absolute top-20 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-60 animate-pulse"
+        className="absolute top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"
         data-testid="test-react-login-circle-1"
       ></div>
       <div
@@ -126,7 +126,7 @@ const Login: React.FC = () => {
               className="text-3xl font-bold text-gray-900 mb-2"
               data-testid="test-react-login-title"
             >
-              Welcome to <span className="text-purple-600">TicketStressed</span>
+              Welcome to <span className="text-teal-600">TicketStressed</span>
             </h2>
             <p
               className="text-gray-600 mb-8"
@@ -154,7 +154,7 @@ const Login: React.FC = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Enter your email"
@@ -186,7 +186,7 @@ const Login: React.FC = () => {
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                     errors.password ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Enter your password"
@@ -222,7 +222,7 @@ const Login: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              className="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
               data-testid="test-react-login-submit-button"
               aria-label={
                 isLoading ? "Signing in..." : "Sign in to your account"
@@ -237,7 +237,7 @@ const Login: React.FC = () => {
               Don't have an account?{" "}
               <Link
                 to="/auth/signup"
-                className="text-purple-600 hover:text-purple-700 font-semibold"
+                className="text-teal-600 hover:text-teal-700 font-semibold"
                 data-testid="test-react-signup-link"
               >
                 Sign up here

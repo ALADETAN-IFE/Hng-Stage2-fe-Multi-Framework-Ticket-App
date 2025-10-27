@@ -1,7 +1,7 @@
 <template>
   <div v-if="isLoading" class="min-h-screen bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center">
     <div class="text-center">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
       <p class="text-gray-600">Loading dashboard...</p>
     </div>
   </div>
@@ -12,7 +12,7 @@
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <h1 class="text-2xl font-bold text-purple-600" data-testid="test-react-dashboard-title">TicketStressed</h1>
+            <h1 class="text-2xl font-bold text-teal-600" data-testid="test-react-dashboard-title">TicketStressed</h1>
           </div>
           <div class="flex items-center space-x-4">
             <span class="text-gray-700 flex flex-col md:flex-row" data-testid="test-react-welcome-message">
@@ -43,12 +43,12 @@
       <!-- Hero Section -->
       <div class="relative overflow-hidden mb-12">
         <!-- Decorative Circles -->
-        <div class="absolute top-10 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-60 animate-pulse"></div>
+        <div class="absolute top-10 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"></div>
         <div class="absolute top-20 right-20 w-24 h-24 bg-blue-200 rounded-full opacity-50 animate-bounce"></div>
         
         <div class="relative z-10 text-center">
           <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-            Welcome to Your <span class="text-purple-600">Dashboard</span>
+            Welcome to Your <span class="text-teal-600">Dashboard</span>
           </h1>
           <p class="text-xl text-gray-700 mb-8">
             Manage your tickets and stay on top of everything
@@ -113,24 +113,24 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <router-link
             to="/tickets"
-            class="bg-purple-600 hover:bg-purple-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
+            class="bg-teal-600 hover:bg-teal-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             <div class="flex items-center justify-center mb-4">
               <TicketIcon class="w-8 h-8" />
             </div>
             <h3 class="text-xl font-semibold mb-2">Manage Tickets</h3>
-            <p class="text-purple-100">View, create, edit, and delete tickets</p>
+            <p class="text-teal-100">View, create, edit, and delete tickets</p>
           </router-link>
 
           <router-link
             to="/tickets/create"
-            class="bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
+            class="bg-gray-600 hover:bg-gray-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             <div class="flex items-center justify-center mb-4">
               <PlusIcon class="w-8 h-8" />
             </div>
             <h3 class="text-xl font-semibold mb-2">Create New Ticket</h3>
-            <p class="text-blue-100">Start a new ticket to get help</p>
+            <p class="text-gray-100">Start a new ticket to get help</p>
           </router-link>
         </div>
       </div>

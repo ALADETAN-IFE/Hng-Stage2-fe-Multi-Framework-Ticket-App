@@ -2,7 +2,7 @@
   <main class="min-h-screen w-full relative bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <!-- Decorative Circles -->
     <div
-      class="absolute top-20 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-60 animate-pulse"
+      class="absolute top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"
       data-testid="test-react-login-circle-1"
     ></div>
     <div
@@ -29,7 +29,7 @@
             class="text-3xl font-bold text-gray-900 mb-2"
             data-testid="test-react-login-title"
           >
-            Welcome to <span class="text-purple-600">TicketStressed</span>
+            Welcome to <span class="text-teal-600">TicketStressed</span>
           </h2>
           <p
             class="text-gray-600 mb-8"
@@ -56,7 +56,7 @@
               v-model="formData.email"
               name="email"
               type="email"
-              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors"
               :class="errors.email ? 'border-red-500' : 'border-gray-300'"
               placeholder="Enter your email"
               data-testid="test-react-email-input"
@@ -79,7 +79,7 @@
                 v-model="formData.password"
                 name="password"
                 :type="showPassword ? 'text' : 'password'"
-                class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors"
                 :class="errors.password ? 'border-red-500' : 'border-gray-300'"
                 placeholder="Enter your password"
                 data-testid="test-react-password-input"
@@ -102,7 +102,7 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+            class="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
             data-testid="test-react-login-submit-button"
             :aria-label="isLoading ? 'Signing in...' : 'Sign in to your account'"
           >
@@ -115,7 +115,7 @@
             Don't have an account?
             <router-link
               to="/auth/signup"
-              class="text-purple-600 hover:text-purple-700 font-semibold"
+              class="text-teal-600 hover:text-teal-700 font-semibold"
               data-testid="test-react-signup-link"
             >
               Sign up here

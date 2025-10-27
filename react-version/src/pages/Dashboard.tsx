@@ -75,7 +75,7 @@ const Dashboard: React.FC = () => {
     return (
       <div className="min-h-screen bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading dashboard...</p>
         </div>
       </div>
@@ -89,7 +89,7 @@ const Dashboard: React.FC = () => {
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-purple-600" data-testid="test-react-dashboard-title">TicketStressed</h1>
+              <h1 className="text-2xl font-bold text-teal-600" data-testid="test-react-dashboard-title">TicketStressed</h1>
             </div>
             <div className="flex items-center space-x-4">
               
@@ -121,12 +121,12 @@ const Dashboard: React.FC = () => {
         {/* Hero Section */}
         <div className="relative overflow-hidden mb-12">
           {/* Decorative Circles */}
-          <div className="absolute top-10 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-60 animate-pulse"></div>
+          <div className="absolute top-10 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"></div>
           <div className="absolute top-20 right-20 w-24 h-24 bg-blue-200 rounded-full opacity-50 animate-bounce"></div>
           
           <div className="relative z-10 text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-              Welcome to Your <span className="text-purple-600">Dashboard</span>
+              Welcome to Your <span className="text-teal-600">Dashboard</span>
             </h1>
             <p className="text-xl text-gray-700 mb-8">
               Manage your tickets and stay on top of everything
@@ -191,24 +191,24 @@ const Dashboard: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link
               to="/tickets"
-              className="bg-purple-600 hover:bg-purple-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="bg-teal-600 hover:bg-teal-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               <div className="flex items-center justify-center mb-4">
                 <TicketIcon className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Manage Tickets</h3>
-              <p className="text-purple-100">View, create, edit, and delete tickets</p>
+              <p className="text-teal-100">View, create, edit, and delete tickets</p>
             </Link>
 
             <Link
               to="/tickets/create"
-              className="bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
+              className="bg-gray-600 hover:bg-gray-700 text-white p-6 rounded-lg text-center transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               <div className="flex items-center justify-center mb-4">
                 <PlusIcon className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Create New Ticket</h3>
-              <p className="text-blue-100">Start a new ticket to get help</p>
+              <p className="text-gray-100">Start a new ticket to get help</p>
             </Link>
           </div>
         </div>

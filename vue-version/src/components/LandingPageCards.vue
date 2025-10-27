@@ -1,8 +1,8 @@
 <template>
   <div class="grid md:grid-cols-3 gap-8">
     <article class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300" data-testid="test-react-feature-card-1">
-      <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-        <TicketIcon class="w-8 h-8 text-purple-600" />
+      <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+        <TicketIcon class="w-8 h-8 text-teal-600" />
       </div>
       <h3 class="text-xl font-semibold text-gray-900 mb-4" data-testid="test-react-feature-title-1">Easy Ticket Management</h3>
       <p class="text-gray-600" data-testid="test-react-feature-description-1">Create, view, edit, and delete tickets with our intuitive interface.</p>

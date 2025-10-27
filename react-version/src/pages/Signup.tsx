@@ -133,7 +133,7 @@ const Signup: React.FC = () => {
     <main className="min-h-screen w-full relative bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       {/* Decorative Circles */}
       <div
-        className="absolute top-20 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-60 animate-pulse"
+        className="absolute top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"
         data-testid="test-react-signup-circle-1"
       ></div>
       <div
@@ -164,7 +164,7 @@ const Signup: React.FC = () => {
               className="text-3xl font-bold text-gray-900 mb-2"
               data-testid="test-react-signup-title"
             >
-              Join <span className="text-purple-600">TicketStressed</span>
+              Join <span className="text-teal-600">TicketStressed</span>
             </h2>
             <p
               className="text-gray-600 mb-8"
@@ -193,7 +193,7 @@ const Signup: React.FC = () => {
                 value={formData.name}
                 onChange={handleChange}
                 data-testid="test-react-name-input"
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                   errors.name ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Enter your full name"
@@ -216,7 +216,7 @@ const Signup: React.FC = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Enter your email"
@@ -241,7 +241,7 @@ const Signup: React.FC = () => {
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                     errors.password ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Create a password"
@@ -279,7 +279,7 @@ const Signup: React.FC = () => {
                   type={showConfirm ? "text" : "password"}
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                     errors.confirmPassword
                       ? "border-red-500"
                       : "border-gray-300"
@@ -314,7 +314,7 @@ const Signup: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              className="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
               data-testid="test-react-signup-submit-button"
               aria-label="Create account"
             >
@@ -327,7 +327,7 @@ const Signup: React.FC = () => {
               Already have an account?{" "}
               <Link
                 to="/auth/login"
-                className="text-purple-600 hover:text-purple-700 font-semibold"
+                className="text-teal-600 hover:text-teal-700 font-semibold"
                 data-testid="test-react-signup-login-link"
                 aria-label="Navigate to login page"
               >

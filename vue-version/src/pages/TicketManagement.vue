@@ -1,7 +1,7 @@
 <template>
   <div v-if="isLoading" class="min-h-screen bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center">
     <div class="text-center">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
       <p class="text-gray-600">Loading tickets...</p>
     </div>
   </div>
@@ -14,7 +14,7 @@
           <div class="flex items-center space-x-4">
             <router-link
               to="/dashboard"
-              class="text-2xl font-bold text-purple-600"
+              class="text-2xl font-bold text-teal-600"
               data-testid="test-react-ticket-brand"
             >
               TicketStressed
@@ -102,7 +102,7 @@
         </div>
         <button
           @click="showForm = true"
-          class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
+          class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
         >
           Create New Ticket
         </button>
@@ -137,7 +137,7 @@
                   v-model="formData.title"
                   name="title"
                   type="text"
-                  :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors', errors.title ? 'border-red-500' : 'border-gray-300']"
+                  :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors', errors.title ? 'border-red-500' : 'border-gray-300']"
                   placeholder="Enter ticket title"
                 />
                 <p v-if="errors.title" class="mt-1 text-sm text-red-600">
@@ -157,7 +157,7 @@
                   v-model="formData.description"
                   name="description"
                   rows="4"
-                  :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors', errors.description ? 'border-red-500' : 'border-gray-300']"
+                  :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors', errors.description ? 'border-red-500' : 'border-gray-300']"
                   placeholder="Enter ticket description"
                 ></textarea>
                 <p v-if="errors.description" class="mt-1 text-sm text-red-600">
@@ -177,7 +177,7 @@
                     id="status"
                     v-model="formData.status"
                     name="status"
-                    :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors', errors.status ? 'border-red-500' : 'border-gray-300']"
+                    :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors', errors.status ? 'border-red-500' : 'border-gray-300']"
                   >
                     <option value="open">Open</option>
                     <option value="in_progress">In Progress</option>
@@ -199,7 +199,7 @@
                     id="priority"
                     v-model="formData.priority"
                     name="priority"
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors"
                   >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -218,7 +218,7 @@
                 </button>
                 <button
                   type="submit"
-                  class="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors duration-200"
+                  class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors duration-200"
                 >
                   {{ editingTicket ? 'Update Ticket' : 'Create Ticket' }}
                 </button>
@@ -242,7 +242,7 @@
           </p>
           <button
             @click="showForm = true"
-            class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+            class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
           >
             Create Your First Ticket
           </button>

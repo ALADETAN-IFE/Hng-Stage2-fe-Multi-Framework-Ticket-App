@@ -228,7 +228,7 @@ const TicketManagement: React.FC = () => {
     return (
       <div className="min-h-screen bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading tickets...</p>
         </div>
       </div>
@@ -244,7 +244,7 @@ const TicketManagement: React.FC = () => {
             <div className="flex items-center space-x-4">
               <Link
                 to="/dashboard"
-                className="text-2xl font-bold text-purple-600"
+                className="text-2xl font-bold text-teal-600"
                 data-testid="test-react-ticket-brand"
               >
                 TicketStressed
@@ -336,7 +336,7 @@ const TicketManagement: React.FC = () => {
           </div>
           <button
             onClick={() => setShowForm(true)}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
+            className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             Create New Ticket
           </button>
@@ -373,7 +373,7 @@ const TicketManagement: React.FC = () => {
                       type="text"
                       value={formData.title}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                         errors.title ? "border-red-500" : "border-gray-300"
                       }`}
                       placeholder="Enter ticket title"
@@ -398,7 +398,7 @@ const TicketManagement: React.FC = () => {
                       value={formData.description}
                       onChange={handleChange}
                       rows={4}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                         errors.description
                           ? "border-red-500"
                           : "border-gray-300"
@@ -425,7 +425,7 @@ const TicketManagement: React.FC = () => {
                         name="status"
                         value={formData.status}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors ${
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
                           errors.status ? "border-red-500" : "border-gray-300"
                         }`}
                       >
@@ -452,7 +452,7 @@ const TicketManagement: React.FC = () => {
                         name="priority"
                         value={formData.priority}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors"
                       >
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
@@ -471,7 +471,7 @@ const TicketManagement: React.FC = () => {
                     </button>
                     <button
                       type="submit"
-                      className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors duration-200"
+                      className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors duration-200"
                     >
                       {editingTicket ? "Update Ticket" : "Create Ticket"}
                     </button>
@@ -497,7 +497,7 @@ const TicketManagement: React.FC = () => {
               </p>
               <button
                 onClick={() => setShowForm(true)}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
               >
                 Create Your First Ticket
               </button>
