@@ -26,7 +26,6 @@ RUN apt-get update \
 		build-essential \
 		pkg-config \
 		autoconf \
-	&& docker-php-ext-configure zip --with-libzip \
 	&& docker-php-ext-install -j$(nproc) zip intl mbstring \
 	# remove build-only packages to shrink image
 	&& apt-get remove -y --purge build-essential pkg-config autoconf \
