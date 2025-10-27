@@ -2,8 +2,9 @@ services:
   - type: web
     name: twig-ticket-app
     runtime: php
+    rootDir: twig-version
     buildCommand: composer install --no-dev --optimize-autoloader
-    startCommand: php -S 0.0.0.0:$PORT
+    startCommand: php -S 0.0.0.0:$PORT -t .
     envVars:
       - key: PHP_VERSION
         value: 8.0

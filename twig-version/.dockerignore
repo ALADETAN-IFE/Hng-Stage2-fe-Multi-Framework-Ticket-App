@@ -6,12 +6,11 @@
 # Documentation
 README.md
 SETUP-GUIDE.md
-DEPLOY.md
+RENDER.md
 
-# Docker files (avoid recursion)
-Dockerfile
-docker-compose.yml
+# Docker files (keep Dockerfile for Render)
 .dockerignore
+render.yaml
 
 # IDE files
 .idea/
@@ -25,9 +24,8 @@ Thumbs.db
 
 # Logs
 *.log
-npm-debug.log*
 
-# Environment files
+# Environment
 .env
 .env.local
 
@@ -35,16 +33,12 @@ npm-debug.log*
 cache/
 *.cache
 
+# Composer vendor (will be installed in container)
+vendor/
+
 # Temporary files
 *.tmp
 *.temp
 
-# Composer vendor (will be installed in container)
-# vendor/
-
-# Node modules (if any)
-node_modules/
-
-# Build files
-dist/
-build/
+# Data files (will be recreated)
+data/
