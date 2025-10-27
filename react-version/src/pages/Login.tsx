@@ -222,7 +222,7 @@ const Login: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              className="z-10 w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
               data-testid="test-react-login-submit-button"
               aria-label={
                 isLoading ? "Signing in..." : "Sign in to your account"
@@ -233,7 +233,7 @@ const Login: React.FC = () => {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-600 z-10">
+            <p className="relative text-gray-600 z-10">
               Don't have an account?{" "}
               <Link
                 to="/auth/signup"

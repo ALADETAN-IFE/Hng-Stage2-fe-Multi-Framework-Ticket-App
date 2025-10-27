@@ -151,7 +151,7 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+            class="z-10 w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
             data-testid="test-react-signup-submit-button"
             aria-label="Create account"
           >
@@ -160,11 +160,11 @@
         </form>
 
         <div class="mt-6 text-center">
-          <p class="text-gray-600 z-10">
+          <p class="relative text-gray-600 z-10">
             Already have an account?
             <router-link
               to="/auth/login"
-              class="text-teal-600 hover:text-teal-700 font-semibold z-10"
+              class="text-teal-600 hover:text-teal-700 font-semibold"
               data-testid="test-react-signup-login-link"
               aria-label="Navigate to login page"
             >

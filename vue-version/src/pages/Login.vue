@@ -102,7 +102,7 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+            class="z-10 w-full bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
             data-testid="test-react-login-submit-button"
             :aria-label="isLoading ? 'Signing in...' : 'Sign in to your account'"
           >
