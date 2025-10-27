@@ -28,8 +28,28 @@
         .animate-pulse { animation: pulse 3s ease-in-out infinite; }
         .animate-bounce { animation: bounce 1s ease-in-out infinite; }
     </style>
+        <link rel="stylesheet" href="/assets/toast.css" />
 </head>
 <body class="font-sans flex justify-center items-center">
     {% block content %}{% endblock %}
+        <script src="/assets/toast.js"></script>
+            <script>
+                // Show session flash messages passed as Twig global `flash`
+                (function(){
+                    const flashes = {{ flash|json_encode()|raw }} || [];
+                    if (Array.isArray(flashes)) {
+                        flashes.forEach(f => {
+                            if (!f || !f.type) return;
+                            const type = f.type;
+                            const msg = f.message || '';
+                            if (type === 'error') window.toast.error(msg);
+                            else if (type === 'success') window.toast.success(msg);
+                            else if (type === 'info') window.toast.info(msg);
+                            else if (type === 'warn') window.toast.warn(msg);
+                            else window.toast.show(msg);
+                        });
+                    }
+                })();
+            </script>
 </body>
 </html>

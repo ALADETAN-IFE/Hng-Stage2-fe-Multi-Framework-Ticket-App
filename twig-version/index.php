@@ -14,6 +14,24 @@ $twig = new Environment($loader, [
     'debug' => true
 ]);
 
+// Flash helpers (store messages in session so they survive redirects)
+function flash_set($type, $message) {
+    if (!isset($_SESSION['flash']) || !is_array($_SESSION['flash'])) {
+        $_SESSION['flash'] = [];
+    }
+    $_SESSION['flash'][] = ['type' => $type, 'message' => $message];
+}
+
+function flash_get_and_clear() {
+    $fl = $_SESSION['flash'] ?? [];
+    unset($_SESSION['flash']);
+    return $fl;
+}
+
+// Make flashes available to all templates
+$flashes = flash_get_and_clear();
+$twig->addGlobal('flash', $flashes);
+
 // Route handling
 $route = $_SERVER['REQUEST_URI'] ?? '/';
 $route = parse_url($route, PHP_URL_PATH);
@@ -70,21 +88,30 @@ switch ($route) {
             // Simple authentication check
             $users = load_json('users.json');
             $user = null;
-            
+            $emailExists = false;
+
             foreach ($users as $u) {
-                if ($u['email'] === $email && $u['password'] === $password) {
-                    $user = $u;
-                    break;
+                if ($u['email'] === $email) {
+                    $emailExists = true;
+                    if ($u['password'] === $password) {
+                        $user = $u;
+                        break;
+                    }
                 }
             }
-            
+
             if ($user) {
                 $_SESSION['user'] = $user;
                 header('Location: /dashboard');
                 exit;
             } else {
-                $error = 'Invalid credentials';
-                echo $twig->render('login.twig', ['error' => $error]);
+                if ($emailExists) {
+                    flash_set('error', 'Incorrect password');
+                } else {
+                    flash_set('error', 'User not found');
+                }
+                header('Location: /auth/login');
+                exit;
             }
         } else {
             echo $twig->render('login.twig');
@@ -103,8 +130,17 @@ switch ($route) {
             // Check if email exists
             foreach ($users as $u) {
                 if ($u['email'] === $email) {
-                    $error = 'Email already exists';
-                    echo $twig->render('signup.twig', ['error' => $error]);
+                    flash_set('error', 'Email already exists');
+                    header('Location: /auth/signup');
+                    exit;
+                }
+            }
+
+            // Check if name exists
+            foreach ($users as $u) {
+                if ($u['name'] === $name) {
+                    flash_set('error', 'Name already exists');
+                    header('Location: /auth/signup');
                     exit;
                 }
             }

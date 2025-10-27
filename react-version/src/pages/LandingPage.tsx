@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import { WavyBackground } from '../assets/icons';
 import LandingPageCards from '../components/landingPageCard';
 import Footer from '../components/footer';
+import WavyBackground from "../assets/landing-waves.svg"
 
 const LandingPage: React.FC = () => {
   return (
@@ -49,7 +50,7 @@ const LandingPage: React.FC = () => {
         {/* Wavy Background */}
         <div className="absolute bottom-0 left-0 w-full" data-testid="test-react-wavy-background">
           {/* <WavyBackground /> */}
-          <img src="../assets/landing-waves.svg" alt="Decorative wavy background" className="relative block w-full h-16" />
+          <img src={WavyBackground} alt="Decorative wavy background" className="relative block w-full h-16" />
         </div>
       </section>
 
