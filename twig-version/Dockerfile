@@ -10,7 +10,20 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy composer files
 COPY composer.json composer.lock* ./
 
-# Install PHP dependencies
+# Install system packages and PHP extensions Composer commonly needs
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends \
+		git \
+		unzip \
+		zip \
+		libzip-dev \
+		zlib1g-dev \
+		libicu-dev \
+	&& docker-php-ext-configure zip --with-libzip \
+	&& docker-php-ext-install -j$(nproc) zip intl mbstring \
+	&& rm -rf /var/lib/apt/lists/*
+
+# Install PHP dependencies (run after required extensions are available)
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
 # Copy application files
