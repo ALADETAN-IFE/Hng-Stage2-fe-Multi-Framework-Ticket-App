@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TicketStressed{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-pulse { animation: pulse 3s ease-in-out infinite; }
+        .animate-bounce { animation: bounce 1s ease-in-out infinite; }
+    </style>
+</head>
+<body class="font-sans">
+    {% block content %}{% endblock %}
+</body>
+</html>
