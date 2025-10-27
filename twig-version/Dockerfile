@@ -11,16 +11,26 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY composer.json composer.lock* ./
 
 # Install system packages and PHP extensions Composer commonly needs
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
+		ca-certificates \
 		git \
 		unzip \
 		zip \
 		libzip-dev \
 		zlib1g-dev \
 		libicu-dev \
+		libxml2-dev \
+		libonig-dev \
+		build-essential \
+		pkg-config \
+		autoconf \
 	&& docker-php-ext-configure zip --with-libzip \
 	&& docker-php-ext-install -j$(nproc) zip intl mbstring \
+	# remove build-only packages to shrink image
+	&& apt-get remove -y --purge build-essential pkg-config autoconf \
+	&& apt-get autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Install PHP dependencies (run after required extensions are available)
