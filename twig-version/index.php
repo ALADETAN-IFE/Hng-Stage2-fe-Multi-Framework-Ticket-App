@@ -21,6 +21,17 @@ $route = parse_url($route, PHP_URL_PATH);
 // Remove query string and normalize path
 $route = rtrim($route, '/') ?: '/';
 
+// Serve static assets
+if (strpos($route, '/assets/') === 0) {
+    $assetPath = __DIR__ . $route;
+    if (file_exists($assetPath)) {
+        $mimeType = mime_content_type($assetPath);
+        header('Content-Type: ' . $mimeType);
+        readfile($assetPath);
+        exit;
+    }
+}
+
 // Handle routes
 switch ($route) {
     case '/':

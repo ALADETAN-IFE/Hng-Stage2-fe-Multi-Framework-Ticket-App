@@ -23,5 +23,4 @@ Thumbs.db
 .env
 .env.local
 
-# Vercel (if exists)
-.vercel/
+
