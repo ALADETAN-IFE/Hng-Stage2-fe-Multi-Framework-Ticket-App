@@ -164,7 +164,7 @@
             Already have an account?
             <router-link
               to="/auth/login"
-              class="text-teal-600 hover:text-teal-700 font-semibold"
+              class="text-teal-600 hover:text-teal-700 font-semibold z-10"
               data-testid="test-react-signup-login-link"
               aria-label="Navigate to login page"
             >
