@@ -32,6 +32,29 @@ if (strpos($route, '/assets/') === 0) {
     }
 }
 
+// Helper: data file helpers
+function data_path($name) {
+    return __DIR__ . '/data/' . $name;
+}
+
+function load_json($filename) {
+    $path = data_path($filename);
+    if (!file_exists($path)) {
+        return [];
+    }
+    $content = file_get_contents($path);
+    return json_decode($content, true) ?: [];
+}
+
+function save_json($filename, $data) {
+    $path = data_path($filename);
+    // Ensure data directory exists
+    if (!is_dir(dirname($path))) {
+        mkdir(dirname($path), 0755, true);
+    }
+    file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT));
+}
+
 // Handle routes
 switch ($route) {
     case '/':
@@ -45,7 +68,7 @@ switch ($route) {
             $password = $_POST['password'] ?? '';
             
             // Simple authentication check
-            $users = json_decode(file_get_contents('data/users.json'), true) ?: [];
+            $users = load_json('users.json');
             $user = null;
             
             foreach ($users as $u) {
@@ -75,7 +98,7 @@ switch ($route) {
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
             
-            $users = json_decode(file_get_contents('data/users.json'), true) ?: [];
+            $users = load_json('users.json');
             
             // Check if email exists
             foreach ($users as $u) {
@@ -95,7 +118,7 @@ switch ($route) {
             ];
             
             $users[] = $newUser;
-            file_put_contents('data/users.json', json_encode($users));
+            save_json('users.json', $users);
             
             $_SESSION['user'] = $newUser;
             header('Location: /dashboard');
@@ -111,8 +134,8 @@ switch ($route) {
             exit;
         }
         
-        // Load tickets
-        $tickets = json_decode(file_get_contents('data/tickets.json'), true) ?: [];
+    // Load tickets
+    $tickets = load_json('tickets.json');
         
         // Calculate stats
         $stats = [
@@ -139,7 +162,7 @@ switch ($route) {
             $action = $_POST['action'] ?? '';
             
             if ($action === 'create') {
-                $tickets = json_decode(file_get_contents('data/tickets.json'), true) ?: [];
+                $tickets = load_json('tickets.json');
                 
                 $newTicket = [
                     'id' => time(),
@@ -153,21 +176,21 @@ switch ($route) {
                 ];
                 
                 $tickets[] = $newTicket;
-                file_put_contents('data/tickets.json', json_encode($tickets));
+                save_json('tickets.json', $tickets);
                 
                 header('Location: /tickets');
                 exit;
             } elseif ($action === 'delete') {
-                $tickets = json_decode(file_get_contents('data/tickets.json'), true) ?: [];
+                $tickets = load_json('tickets.json');
                 $tickets = array_filter($tickets, fn($t) => $t['id'] != $_POST['id']);
-                file_put_contents('data/tickets.json', json_encode(array_values($tickets)));
+                save_json('tickets.json', array_values($tickets));
                 
                 header('Location: /tickets');
                 exit;
             }
         }
         
-        $tickets = json_decode(file_get_contents('data/tickets.json'), true) ?: [];
+    $tickets = load_json('tickets.json');
         echo $twig->render('tickets.twig', [
             'user' => $_SESSION['user'],
             'tickets' => $tickets
