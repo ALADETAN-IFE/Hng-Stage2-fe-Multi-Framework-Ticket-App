@@ -1,0 +1,27 @@
+# Composer
+/vendor/
+composer.lock
+
+# Data files (can be recreated)
+/data/
+/cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Vercel (if exists)
+.vercel/
