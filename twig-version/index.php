@@ -233,6 +233,23 @@ switch ($route) {
                 
                 header('Location: /tickets');
                 exit;
+            } elseif ($action === 'update') {
+                $tickets = load_json('tickets.json');
+                $id = $_POST['id'] ?? null;
+                foreach ($tickets as &$t) {
+                    if ((string)$t['id'] === (string)$id) {
+                        $t['title'] = $_POST['title'] ?? $t['title'];
+                        $t['description'] = $_POST['description'] ?? $t['description'];
+                        $t['status'] = $_POST['status'] ?? $t['status'];
+                        $t['priority'] = $_POST['priority'] ?? $t['priority'];
+                        $t['updatedAt'] = date('Y-m-d H:i:s');
+                        break;
+                    }
+                }
+                unset($t);
+                save_json('tickets.json', $tickets);
+                header('Location: /tickets');
+                exit;
             }
         }
         

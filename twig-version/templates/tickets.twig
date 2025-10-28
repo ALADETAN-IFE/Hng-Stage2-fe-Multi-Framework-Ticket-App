@@ -1,11 +1,11 @@
 {% extends 'base.twig' %}
 
-{% block title %}Ticket Management - TicketStressed{% endblock %}
+{% block title %}Ticket Management - TicketStressed - Twig Version{% endblock %}
 
 {% block content %}
 <div class="min-h-screen max-w-[1440px] bg-gradient-to-br from-teal-50 via-gray-50 to-indigo-100 w-full">
   <script>
-    window.TICKETS_MODE = {{ mode is not null ? mode|json_encode() : 'null' }};
+    window.TICKETS_MODE = {{ mode is not null ? mode|json_encode()|raw : 'null' }};
   </script>
   <!-- Navigation -->
   <nav class="bg-white shadow-lg w-full">
@@ -49,7 +49,8 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Create New Ticket</h2>
 
         <form action="/tickets" method="POST" class="space-y-6" novalidate>
-          <input type="hidden" name="action" value="create">
+          <input type="hidden" name="action" value="create" id="ticket-action">
+          <input type="hidden" name="id" id="ticket-id">
 
           <div>
             <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
@@ -84,9 +85,12 @@
             </div>
           </div>
 
-          <div class="flex justify-end">
+            <div class="flex justify-end space-x-4">
+            <button type="button" onclick="hideTicketForm()" aria-label="Close" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              Cancel
+            </button>
             <button type="submit" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors duration-200">
-              Create Ticket
+              <span id="ticket-submit-text">Create Ticket</span>
             </button>
           </div>
         </form>
@@ -163,35 +167,69 @@
         } catch (e) {
           // ignore
         }
+
+        // Open edit modal and populate fields
+        window.openEdit = function(ticket) {
+          try {
+            // ensure modal exists
+            if (!modal) return;
+            // populate
+            const idInput = document.getElementById('ticket-id');
+            const actionInput = document.getElementById('ticket-action');
+            const submitText = document.getElementById('ticket-submit-text');
+            if (idInput) idInput.value = ticket.id || '';
+            if (actionInput) actionInput.value = 'update';
+            if (title) title.value = ticket.title || '';
+            if (description) description.value = ticket.description || '';
+            if (status) status.value = ticket.status || 'open';
+            if (submitText) submitText.textContent = 'Update Ticket';
+            showTicketForm();
+          } catch (err) {
+            console.error('openEdit error', err);
+          }
+        }
       })();
     </script>
 
     <!-- Tickets List -->
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
       {% if tickets|length == 0 %}
-        <div class="col-span-full text-center py-12 bg-white rounded-xl shadow-lg">
+        <div class="col-span-full text-center py-12">
           <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
             </svg>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-2">No tickets yet</h3>
-          <p class="text-gray-600">Create your first ticket to get started</p>
+          <p class="text-gray-600 mb-6">Create your first ticket to get started</p>
+          <button
+            onclick="showTicketForm()"
+            class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+          >
+            Create Your First Ticket
+          </button>
         </div>
       {% else %}
         {% for ticket in tickets %}
           <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
             <div class="flex justify-between items-start mb-4">
               <h3 class="text-lg font-semibold text-gray-900">{{ ticket.title }}</h3>
-              <form action="/tickets" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this ticket?')">
-                <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="id" value="{{ ticket.id }}">
-                <button type="submit" class="text-red-600 hover:text-red-800 transition-colors">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+              <div class="inline-flex items-center gap-2">
+                <button type="button" onclick='openEdit({{ ticket|json_encode|raw }})' class="text-blue-600 hover:text-blue-800 transition-colors" aria-label="Edit ticket">
+                  <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
                 </button>
-              </form>
+                <form action="/tickets" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this ticket?')">
+                  <input type="hidden" name="action" value="delete">
+                  <input type="hidden" name="id" value="{{ ticket.id }}">
+                  <button type="submit" class="text-red-600 hover:text-red-800 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </form>
+              </div>
             </div>
 
             {% if ticket.description %}
@@ -218,8 +256,7 @@
             </div>
 
             <div class="text-sm text-gray-500">
-              <p>Created: {{ ticket.createdAt }}</p>
-              <p>By: {{ ticket.createdBy }}</p>
+              <p>Created: {{ ticket.createdAt|date("m/d/Y") }}</p>
             </div>
           </div>
         {% endfor %}
