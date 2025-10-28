@@ -48,12 +48,12 @@
 
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Create New Ticket</h2>
 
-        <form action="/tickets" method="POST" class="space-y-6">
+        <form action="/tickets" method="POST" class="space-y-6" novalidate>
           <input type="hidden" name="action" value="create">
 
           <div>
             <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
-            <input id="title" name="title" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors" placeholder="Enter ticket title" aria-describedby="error-title">
+            <input id="title" name="title" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors" placeholder="Enter ticket title" aria-describedby="error-title">
             <p id="error-title" class="mt-2 text-sm text-red-600 hidden"></p>
           </div>
 
@@ -66,7 +66,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Status *</label>
-              <select id="status" name="status" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors">
+              <select id="status" name="status" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors">
                 <option value="open">Open</option>
                 <option value="in_progress">In Progress</option>
                 <option value="closed">Closed</option>
