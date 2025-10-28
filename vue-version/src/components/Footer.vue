@@ -10,7 +10,7 @@
           <a href="#" class="text-gray-400 hover:text-white transition-colors" data-testid="test-react-contact-link">Contact</a>
         </nav>
         <div class="mt-8 pt-8 border-t border-gray-800">
-          <p class="text-gray-400" data-testid="test-react-copyright">&copy; 2024 TicketStressed. All rights reserved.</p>
+          <p class="text-gray-400" data-testid="test-react-copyright">&copy; {{new Date().getFullYear()}} TicketStressed. All rights reserved.</p>
         </div>
       </div>
     </div>
