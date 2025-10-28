@@ -73,6 +73,14 @@ function save_json($filename, $data) {
     file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT));
 }
 
+// Allow an optional mode parameter for /tickets (eg. /tickets/create)
+$tickets_mode = null;
+if (preg_match('#^/tickets(?:/([^/]+))?$#', $route, $m)) {
+    $tickets_mode = $m[1] ?? null;
+    // normalize route so switch handles it as /tickets
+    $route = '/tickets';
+}
+
 // Handle routes
 switch ($route) {
     case '/':
@@ -228,10 +236,11 @@ switch ($route) {
             }
         }
         
-    $tickets = load_json('tickets.json');
+        $tickets = load_json('tickets.json');
         echo $twig->render('tickets.twig', [
             'user' => $_SESSION['user'],
-            'tickets' => $tickets
+            'tickets' => $tickets,
+            'mode' => $tickets_mode
         ]);
         break;
     

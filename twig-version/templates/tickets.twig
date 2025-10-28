@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="min-h-screen max-w-[1440px] bg-gradient-to-br from-teal-50 via-gray-50 to-indigo-100 w-full">
+  <script>
+    window.TICKETS_MODE = {{ mode is not null ? mode|json_encode() : 'null' }};
+  </script>
   <!-- Navigation -->
   <nav class="bg-white shadow-lg w-full">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 relative w-full">
@@ -30,66 +33,75 @@
         <h1 class="text-3xl font-bold text-gray-900">Ticket Management</h1>
         <p class="text-gray-600 mt-2">Manage all your tickets in one place</p>
       </div>
-      <button onclick="document.getElementById('ticket-form').scrollIntoView({behavior: 'smooth'})" class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
+      <button type="button" onclick="showTicketForm()" class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
         Create New Ticket
       </button>
     </div>
+    <!-- Ticket Form Modal (hidden by default) -->
+    <div id="ticket-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+      <div class="bg-white rounded-xl shadow-xl p-8 mb-8 w-full max-w-2xl relative">
+        <button type="button" onclick="hideTicketForm()" aria-label="Close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
 
-    <!-- Ticket Form -->
-    <div id="ticket-form" class="bg-white rounded-xl shadow-xl p-8 mb-8">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Create New Ticket</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Create New Ticket</h2>
 
-      <form action="/tickets" method="POST" class="space-y-6">
-        <input type="hidden" name="action" value="create">
-        
-        <div>
-          <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
-          <input id="title" name="title" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors" placeholder="Enter ticket title" aria-describedby="error-title">
-          <p id="error-title" class="mt-2 text-sm text-red-600 hidden"></p>
-        </div>
+        <form action="/tickets" method="POST" class="space-y-6">
+          <input type="hidden" name="action" value="create">
 
-        <div>
-          <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-          <textarea id="description" name="description" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors" placeholder="Enter ticket description" aria-describedby="error-description"></textarea>
-          <p id="error-description" class="mt-2 text-sm text-red-600 hidden"></p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Status *</label>
-            <select id="status" name="status" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors">
-              <option value="open">Open</option>
-              <option value="in_progress">In Progress</option>
-              <option value="closed">Closed</option>
-            </select>
-            <p id="error-status" class="mt-2 text-sm text-red-600 hidden"></p>
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
+            <input id="title" name="title" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors" placeholder="Enter ticket title" aria-describedby="error-title">
+            <p id="error-title" class="mt-2 text-sm text-red-600 hidden"></p>
           </div>
 
           <div>
-            <label for="priority" class="block text-sm font-medium text-gray-700 mb-2">Priority</label>
-            <select id="priority" name="priority" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors">
-              <option value="low">Low</option>
-              <option value="medium" selected>Medium</option>
-              <option value="high">High</option>
-            </select>
+            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+            <textarea id="description" name="description" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors" placeholder="Enter ticket description" aria-describedby="error-description"></textarea>
+            <p id="error-description" class="mt-2 text-sm text-red-600 hidden"></p>
           </div>
-        </div>
 
-        <div class="flex justify-end">
-          <button type="submit" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors duration-200">
-            Create Ticket
-          </button>
-        </div>
-      </form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Status *</label>
+              <select id="status" name="status" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors">
+                <option value="open">Open</option>
+                <option value="in_progress">In Progress</option>
+                <option value="closed">Closed</option>
+              </select>
+              <p id="error-status" class="mt-2 text-sm text-red-600 hidden"></p>
+            </div>
+
+            <div>
+              <label for="priority" class="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+              <select id="priority" name="priority" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors duration-200">
+              Create Ticket
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <script>
       (function(){
-        const form = document.querySelector('#ticket-form form');
+        const modal = document.getElementById('ticket-modal');
+        const form = modal ? modal.querySelector('form') : null;
         if (!form) return;
-        const title = document.getElementById('title');
-        const status = document.getElementById('status');
-        const description = document.getElementById('description');
+
+        const title = modal.querySelector('#title');
+        const status = modal.querySelector('#status');
+        const description = modal.querySelector('#description');
 
         function showError(id, msg) {
           const p = document.getElementById('error-' + id);
@@ -129,8 +141,28 @@
           if (Object.keys(newErrors).length > 0) {
             e.preventDefault();
             Object.keys(newErrors).forEach(k => showError(k, newErrors[k]));
+            return;
           }
+
+          // allow submit to proceed, hide modal after successful submit request will redirect
         });
+
+        window.showTicketForm = function(){
+          if (modal) modal.classList.remove('hidden');
+        }
+
+        window.hideTicketForm = function(){
+          if (modal) modal.classList.add('hidden');
+        }
+
+        // Auto open when server routed mode === 'create'
+        try {
+          if (window.TICKETS_MODE === 'create') {
+            window.showTicketForm();
+          }
+        } catch (e) {
+          // ignore
+        }
       })();
     </script>
 
