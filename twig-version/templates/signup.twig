@@ -4,8 +4,18 @@
 
 {% block content %}
 <main class="min-h-screen max-w-[1440px] w-full relative bg-gradient-to-br from-teal-50 via-gray-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="absolute top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"></div>
-  <div class="absolute bottom-20 right-20 w-24 h-24 bg-gray-200 rounded-full opacity-50 animate-bounce"></div>
+   <div
+      class="absolute top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"
+      data-testid="test-twig-signup-circle-1"
+    ></div>
+    <div
+      class="absolute bottom-20 right-20 w-24 h-24 bg-blue-200 rounded-full opacity-50 animate-bounce"
+      data-testid="test-twig-signup-circle-2"
+    ></div>
+    <div
+      class="absolute top-1/2 left-1/4 w-16 h-16 bg-indigo-200 rounded-full opacity-40 animate-pulse"
+      data-testid="test-twig-signup-circle-3"
+    ></div>
 
   <div class="max-w-md w-full space-y-8">
     <section class="bg-white rounded-2xl shadow-xl p-8">
