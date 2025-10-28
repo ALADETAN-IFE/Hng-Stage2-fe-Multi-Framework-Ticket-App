@@ -152,6 +152,8 @@ switch ($route) {
                 'email' => $email,
                 'password' => $password
             ];
+                
+            flash_set('success', 'Account created successfully!');
             
             $users[] = $newUser;
             save_json('users.json', $users);
