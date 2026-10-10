@@ -41,6 +41,13 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p data cache
 
+# Create a non-root user and group
+RUN groupadd -g 1000 appuser && useradd -u 1000 -g appuser -m appuser \
+    && chown -R appuser:appuser /var/www/html
+
+# Switch to non-root user
+USER appuser
+
 # Expose port (Render will provide PORT env var)
 EXPOSE $PORT
 
