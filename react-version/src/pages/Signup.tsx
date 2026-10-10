@@ -68,11 +68,11 @@ const Signup: React.FC = () => {
       };
 
       const existingUsers = JSON.parse(
-        localStorage.getItem("ticketapp_session_users") || "[]"
+        localStorage.getItem("ticketapp_session_users") || "[]",
       );
       if (
         existingUsers.some(
-          (user: { email: string }) => user.email === formData.email
+          (user: { email: string }) => user.email === formData.email,
         )
       ) {
         toast.error("Email already exists");
@@ -80,7 +80,7 @@ const Signup: React.FC = () => {
       }
       if (
         existingUsers.some(
-          (user: { name: string }) => user.name === formData.name
+          (user: { name: string }) => user.name === formData.name,
         )
       ) {
         toast.error("Name already exists");
@@ -97,7 +97,7 @@ const Signup: React.FC = () => {
             token: "mock-jwt-token",
             expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
           },
-        ])
+        ]),
       );
 
       localStorage.setItem(
@@ -106,7 +106,7 @@ const Signup: React.FC = () => {
           user: userData,
           token: "mock-jwt-token",
           expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
-        })
+        }),
       );
 
       toast.success("Account created successfully!");
