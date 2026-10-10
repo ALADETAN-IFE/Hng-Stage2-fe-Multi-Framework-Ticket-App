@@ -1,5 +1,7 @@
 <template>
-  <main class="min-h-screen w-full relative bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <main
+    class="min-h-screen w-full relative bg-linear-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+  >
     <!-- Decorative Circles -->
     <div
       class="absolute top-20 left-10 w-32 h-32 bg-teal-200 rounded-full opacity-60 animate-pulse"
@@ -60,11 +62,16 @@
               v-model="formData.name"
               name="name"
               type="text"
-              :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors', errors.name ? 'border-red-500' : 'border-gray-300']"
+              :class="[
+                'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors',
+                errors.name ? 'border-red-500' : 'border-gray-300',
+              ]"
               placeholder="Enter your full name"
               data-testid="test-react-name-input"
             />
-            <p v-if="errors.name" class="mt-1 text-sm text-red-600">{{ errors.name }}</p>
+            <p v-if="errors.name" class="mt-1 text-sm text-red-600">
+              {{ errors.name }}
+            </p>
           </div>
 
           <div>
@@ -79,11 +86,16 @@
               v-model="formData.email"
               name="email"
               type="email"
-              :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors', errors.email ? 'border-red-500' : 'border-gray-300']"
+              :class="[
+                'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors',
+                errors.email ? 'border-red-500' : 'border-gray-300',
+              ]"
               placeholder="Enter your email"
               data-testid="test-react-email-input"
             />
-            <p v-if="errors.email" class="mt-1 text-sm text-red-600">{{ errors.email }}</p>
+            <p v-if="errors.email" class="mt-1 text-sm text-red-600">
+              {{ errors.email }}
+            </p>
           </div>
 
           <div>
@@ -99,7 +111,10 @@
                 v-model="formData.password"
                 name="password"
                 :type="showPassword ? 'text' : 'password'"
-                :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors', errors.password ? 'border-red-500' : 'border-gray-300']"
+                :class="[
+                  'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors',
+                  errors.password ? 'border-red-500' : 'border-gray-300',
+                ]"
                 placeholder="Create a password"
                 data-testid="test-react-password-input"
               />
@@ -113,7 +128,9 @@
                 <EyeIcon v-else class="w-5 h-5" />
               </button>
             </div>
-            <p v-if="errors.password" class="mt-1 text-sm text-red-600">{{ errors.password }}</p>
+            <p v-if="errors.password" class="mt-1 text-sm text-red-600">
+              {{ errors.password }}
+            </p>
           </div>
 
           <div>
@@ -129,13 +146,20 @@
                 v-model="formData.confirmPassword"
                 name="confirmPassword"
                 :type="showConfirm ? 'text' : 'password'"
-                :class="['w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors', errors.confirmPassword ? 'border-red-500' : 'border-gray-300']"
+                :class="[
+                  'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors',
+                  errors.confirmPassword ? 'border-red-500' : 'border-gray-300',
+                ]"
                 placeholder="Confirm your password"
                 data-testid="test-react-confirm-password-input"
               />
               <button
                 type="button"
-                :aria-label="showConfirm ? 'Hide confirm password' : 'Show confirm password'"
+                :aria-label="
+                  showConfirm
+                    ? 'Hide confirm password'
+                    : 'Show confirm password'
+                "
                 @click="showConfirm = !showConfirm"
                 class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
               >
@@ -155,7 +179,7 @@
             data-testid="test-react-signup-submit-button"
             aria-label="Create account"
           >
-            {{ isLoading ? 'Creating Account...' : 'Create Account' }}
+            {{ isLoading ? "Creating Account..." : "Create Account" }}
           </button>
         </form>
 
@@ -178,18 +202,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { toast } from 'vue3-toastify';
-import EyeIcon from '../assets/icons/EyeIcon.vue';
-import EyeOffIcon from '../assets/icons/EyeOffIcon.vue';
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { toast } from "vue3-toastify";
+import EyeIcon from "../assets/icons/EyeIcon.vue";
+import EyeOffIcon from "../assets/icons/EyeOffIcon.vue";
 
 const router = useRouter();
 const formData = ref({
-  name: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
 });
 const errors = ref({});
 const isLoading = ref(false);
@@ -200,27 +224,27 @@ const validateForm = () => {
   const newErrors = {};
 
   if (!formData.value.name.trim()) {
-    newErrors.name = 'Name is required';
+    newErrors.name = "Name is required";
   } else if (formData.value.name.trim().length < 2) {
-    newErrors.name = 'Name must be at least 2 characters';
+    newErrors.name = "Name must be at least 2 characters";
   }
 
   if (!formData.value.email) {
-    newErrors.email = 'Email is required';
+    newErrors.email = "Email is required";
   } else if (!/\S+@\S+\.\S+/.test(formData.value.email)) {
-    newErrors.email = 'Email is invalid';
+    newErrors.email = "Email is invalid";
   }
 
   if (!formData.value.password) {
-    newErrors.password = 'Password is required';
+    newErrors.password = "Password is required";
   } else if (formData.value.password.length < 6) {
-    newErrors.password = 'Password must be at least 6 characters';
+    newErrors.password = "Password must be at least 6 characters";
   }
 
   if (!formData.value.confirmPassword) {
-    newErrors.confirmPassword = 'Please confirm your password';
+    newErrors.confirmPassword = "Please confirm your password";
   } else if (formData.value.password !== formData.value.confirmPassword) {
-    newErrors.confirmPassword = 'Passwords do not match';
+    newErrors.confirmPassword = "Passwords do not match";
   }
 
   errors.value = newErrors;
@@ -244,48 +268,45 @@ const handleSubmit = async (e) => {
     };
 
     const existingUsers = JSON.parse(
-      localStorage.getItem('ticketapp_session_users') || '[]'
+      localStorage.getItem("ticketapp_session_users") || "[]",
     );
-    if (
-      existingUsers.some(
-        (user) => user.email === formData.value.email
-      )
-    ) {
-      toast.error('Email already exists');
+    if (existingUsers.some((user) => user.email === formData.value.email)) {
+      toast.error("Email already exists");
       return;
     }
-    if (
-      existingUsers.some(
-        (user) => user.name === formData.value.name
-      )
-    ) {
-      toast.error('Name already exists');
+    if (existingUsers.some((user) => user.name === formData.value.name)) {
+      toast.error("Name already exists");
       return;
     }
 
     localStorage.setItem(
-      'ticketapp_session_users',
-      JSON.stringify([...existingUsers, {
-        user: {...userData, password: formData.value.password},
-        token: 'mock-jwt-token',
-        expires: Date.now() + 24 * 60 * 60 * 1000,
-      }])
+      "ticketapp_session_users",
+      JSON.stringify([
+        ...existingUsers,
+        {
+          user: { ...userData, password: formData.value.password },
+          token: "mock-jwt-token",
+          expires: Date.now() + 24 * 60 * 60 * 1000,
+        },
+      ]),
     );
 
-    localStorage.setItem('ticketapp_session', JSON.stringify({
-      user: userData,
-      token: 'mock-jwt-token',
-      expires: Date.now() + 24 * 60 * 60 * 1000,
-    }));
+    localStorage.setItem(
+      "ticketapp_session",
+      JSON.stringify({
+        user: userData,
+        token: "mock-jwt-token",
+        expires: Date.now() + 24 * 60 * 60 * 1000,
+      }),
+    );
 
-    toast.success('Account created successfully!');
-    router.push('/dashboard');
+    toast.success("Account created successfully!");
+    router.push("/dashboard");
   } catch (error) {
     console.log(error);
-    toast.error('Registration failed. Please try again.');
+    toast.error("Registration failed. Please try again.");
   } finally {
     isLoading.value = false;
   }
 };
 </script>
-

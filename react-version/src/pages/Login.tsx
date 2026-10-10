@@ -47,12 +47,12 @@ const Login: React.FC = () => {
 
       // Mock authentication - in real app, this would be an API call
       const existingUsers = JSON.parse(
-        localStorage.getItem("ticketapp_session_users") || "[]"
+        localStorage.getItem("ticketapp_session_users") || "[]",
       );
 
       // Find user by email
       const user = existingUsers.find(
-        (u: { user: { email: string } }) => u.user.email === formData.email
+        (u: { user: { email: string } }) => u.user.email === formData.email,
       );
 
       if (!user) {
@@ -72,7 +72,7 @@ const Login: React.FC = () => {
           user: user.user,
           token: "mock-jwt-token",
           expires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
-        })
+        }),
       );
 
       toast.success("Login successful!");
@@ -244,19 +244,6 @@ const Login: React.FC = () => {
               </Link>
             </p>
           </div>
-
-          <aside
-            className="mt-6 p-4 bg-blue-50 rounded-lg"
-            data-testid="test-react-demo-credentials"
-          >
-            <p className="text-sm text-blue-800 font-medium">
-              Demo Credentials:
-            </p>
-            <p className="text-sm text-blue-700">
-              Email: demo@ticketstressed.com
-            </p>
-            <p className="text-sm text-blue-700">Password: password123</p>
-          </aside>
         </section>
       </div>
     </main>
